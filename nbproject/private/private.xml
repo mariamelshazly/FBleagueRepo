@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/FBLeague.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/LoggingIn.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/Player.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/User.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/SigningUp.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/Squad.java</file>
+            <file>file:/D:/Downloads/FBleuge4/FBLeague/src/fbleague/Goalkeeper.java</file>
+        </group>
     </open-files>
 </project-private>

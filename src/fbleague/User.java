@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public abstract class User {
 	
-	String name;
+    String name;
     String email;
     String favplt;
     String pass;

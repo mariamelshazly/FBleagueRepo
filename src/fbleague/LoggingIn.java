@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class LoggingIn extends User {
     
-    String Lemail;
+    static String Lemail;
     String Lpass;
    // String LVemail;
     String LVpass;
@@ -33,7 +33,8 @@ public class LoggingIn extends User {
     	int i=3;
     	boolean isSuccessful = false;
     	while(true) {
-    	File file = new File(Lemail + ".txt");
+    	//File file = new File("D://Eclipse//database//users//" + Lemail +".txt");
+        File file = new File("database//users//" + Lemail +".txt");
             if(!file.exists()){
                 System.out.println("Invalid email! Please re-enter correct E-mail: ");
                 Lemail=in2.nextLine ();
@@ -45,7 +46,9 @@ public class LoggingIn extends User {
     	}
             int passLine = 1;
             try {
-				LVpass = Files.readAllLines(Paths.get(Lemail + ".txt")).get(passLine);
+				LVpass = Files.readAllLines(Paths.get("database//users//" + Lemail +".txt")).get(passLine);
+                       //LVpass = Files.readAllLines(Paths.get("D:\\Downloads\\FBleuge4\\FBLeague\\database\\users\\" + Lemail +".txt")).get(passLine);
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -73,5 +76,9 @@ public class LoggingIn extends User {
             {
             }
             }
+     public static String getEmail()
+     {
+    	 return Lemail;
+     }
     
 }
