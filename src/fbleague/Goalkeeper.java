@@ -22,9 +22,10 @@ public class Goalkeeper extends Player {
         System.out.println("Player cost: ");
         cost = in.nextInt();
         String costString = cost.toString();
+        points = 0;
              
              try {// D://Eclipse/FBleague/"pname".txt
-        FileWriter w2 = new FileWriter("database//players//" + fEmail + "//goalkeepers//" + pname +".txt", true);
+        FileWriter w2 = new FileWriter("database//players//" + "goalkeepers//" + pname +".txt", true);
         w2.write(pname);
         w2.write(System.getProperty( "line.separator" ));
         w2.write(nationality);
@@ -35,18 +36,15 @@ public class Goalkeeper extends Player {
         w2.write(System.getProperty( "line.separator" ));
         w2.write(costString);
         w2.write(System.getProperty( "line.separator" ));
+        w2.write(points);
         w2.close();
         }
-             
-             
-             
-             
               catch (Exception ae) {
       System.out.println("An error occurred.");
       System.out.println(ae);
       ae.printStackTrace();
     }
-             FileWriter w3 = new FileWriter("database//players//" + fEmail + "//goalkeepers//" + "goalkeepers.txt", true);
+             FileWriter w3 = new FileWriter("database//players//" + "goalkeepers//" + "goalkeepers.txt", true);
              w3.write(pname);
              w3.write(System.getProperty( "line.separator" ));
              w3.close();
@@ -57,9 +55,9 @@ public class Goalkeeper extends Player {
 }
 	void deletePlayer(String player) throws FileNotFoundException
 	{
-		File delF = new File("database//players//" + fEmail + "//goalkeepers//" + player + ".txt");
+		File delF = new File("database//players//" + "goalkeepers//" + player + ".txt");
 		delF.delete();
-		File file3 = new File("database//players//" + fEmail + "//goalkeepers//goalkeepers.txt");
+		File file3 = new File("database//players//" + "goalkeepers//goalkeepers.txt");
 		 StringBuilder sb = new StringBuilder();
 		    try (Scanner sc = new Scanner(file3)) {
 		        String currentLine;
@@ -86,7 +84,7 @@ public class Goalkeeper extends Player {
 	}
 	void displayPlayers() throws FileNotFoundException
 	{
-		Scanner input3 = new Scanner(new File("database//players//" + fEmail + "//goalkeepers//" + "goalkeepers.txt"));
+		Scanner input3 = new Scanner(new File("database//players//" + "goalkeepers//" + "goalkeepers.txt"));
 		while (input3.hasNextLine())
 		{
 		   System.out.println(input3.nextLine());
@@ -99,15 +97,18 @@ public class Goalkeeper extends Player {
 		int posLine = 2;
 		int clubLine = 3;
 		int costLine = 4;
-		String disName = Files.readAllLines(Paths.get("database//players//" + fEmail + "//goalkeepers//" + disPlayer + ".txt")).get(nameLine);
-		String disNat = Files.readAllLines(Paths.get("database//players//" + fEmail + "//goalkeepers//" + disPlayer + ".txt")).get(natLine);
-		String disPos = Files.readAllLines(Paths.get("database//players//" + fEmail + "//goalkeepers//" + disPlayer + ".txt")).get(posLine);
-		String disClub = Files.readAllLines(Paths.get("database//players//" + fEmail + "//goalkeepers//" + disPlayer + ".txt")).get(clubLine);
-		String disCost = Files.readAllLines(Paths.get("database//players//" + fEmail + "//goalkeepers//" + disPlayer + ".txt")).get(costLine);
+		int pointsLine = 5;
+		String disName = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(nameLine);
+		String disNat = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(natLine);
+		String disPos = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(posLine);
+		String disClub = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(clubLine);
+		String disCost = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(costLine);
+		String disPoints = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//" + disPlayer + ".txt")).get(pointsLine);
 		System.out.println("Name: " + disName);
 		System.out.println("Nationality: " + disNat);
 		System.out.println("Position: " + disPos);
 		System.out.println("Club: " + disClub);
-		System.out.println("Cost: " + disCost);		
+		System.out.println("Cost: " + disCost);
+		System.out.println("Points: " + disPoints);
 	}
 }

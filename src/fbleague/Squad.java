@@ -33,7 +33,7 @@ public class Squad {
          Scanner in = new Scanner (System.in);
          System.out.println("Please enter name of squad:\n");
          Sname = in.nextLine();
-         FileWriter w2 = new FileWriter("database//squads//" + Sname +".txt", true);
+         FileWriter w2 = new FileWriter("database//squads//"  + Sname + ".txt", true);
          w2.write(Sname);
         w2.write(System.getProperty( "line.separator" ));
         System.out.println("Please enter name of players:\n");
@@ -46,7 +46,7 @@ public class Squad {
         w2.write(Gname);
         w2.write(System.getProperty( "line.separator" ));
         //cost+=
-        String pcost = Files.readAllLines(Paths.get("database//players//"+ fEmail + "//goalkeepers//"+ Gname +".txt")).get(costLine);
+        String pcost = Files.readAllLines(Paths.get("database//players//" + "goalkeepers//"+ Gname +".txt")).get(costLine);
         int pcost2=Integer.parseInt(pcost);
         cost+=pcost2;
           i++;
@@ -59,7 +59,7 @@ public class Squad {
         Dname = in.nextLine();
         w2.write(Dname);
         w2.write(System.getProperty( "line.separator" ));
-        String pcost = Files.readAllLines(Paths.get("database//players//"+ fEmail +"//defenders//"+ Dname +".txt")).get(costLine);
+        String pcost = Files.readAllLines(Paths.get("database//players//" + "defenders//"+ Dname +".txt")).get(costLine);
         int pcost2=Integer.parseInt(pcost);
         cost+=pcost2;
         j++;
@@ -72,7 +72,7 @@ public class Squad {
         Mname = in.nextLine();
          w2.write(Mname);
          w2.write(System.getProperty( "line.separator" ));
-         String pcost = Files.readAllLines(Paths.get("database//players//"+ fEmail +"//midfielders//"+ Mname +".txt")).get(costLine);
+         String pcost = Files.readAllLines(Paths.get("database//players//" + "midfielders//"+ Mname +".txt")).get(costLine);
         int pcost2=Integer.parseInt(pcost);
         cost+=pcost2;
         k++;
@@ -85,7 +85,7 @@ public class Squad {
         Fname = in.nextLine();
          w2.write(Fname);
          w2.write(System.getProperty( "line.separator" ));
-         String pcost = Files.readAllLines(Paths.get("database//players//"+ fEmail +"//forwardplayers//"+ Fname +".txt")).get(costLine);
+         String pcost = Files.readAllLines(Paths.get("database//players//" + "forwardplayers//"+ Fname +".txt")).get(costLine);
         int pcost2=Integer.parseInt(pcost);
         cost+=pcost2;
         m++;
@@ -96,6 +96,10 @@ public class Squad {
         	w2.write("Cost: " + cost);
             w2.write(System.getProperty( "line.separator" ));
         w2.close();
+        FileWriter w3 = new FileWriter("database//squads//" + fEmail + "//" + "squads.txt", true);
+        w3.write(Sname);
+        w3.write(System.getProperty( "line.separator" ));
+        w3.close();
         break;
         }
         else if(cost > 100000000)
@@ -111,46 +115,23 @@ public class Squad {
         }
         }
     }
-             
-        //try {
-        //FileWriter w2 = new FileWriter("D:\\Downloads\\FBleuge4\\FBLeague\\database\\squads" + Sname +".txt", true);
-       // FileWriter w2 = new FileWriter("database//squads//" + Sname +".txt", true);
-      /*  w2.write(Sname);
-        w2.write(System.getProperty( "line.separator" ));
-        w2.write("Goalkeepers: ");
-        w2.write(Gname);
-        w2.write(System.getProperty( "line.separator" ));
-        w2.write("Defenders: ");
-        w2.write(Dname);
-        w2.write(System.getProperty( "line.separator" ));
-        w2.write("Midfielders: ");
-        w2.write(Mname);
-        w2.write(System.getProperty( "line.separator" ));
-        w2.write("Forward Players: ");
-        w2.write(Fname);
-        w2.write(System.getProperty( "line.separator" ));
-        w2.close(); */
-        //}
-        //catch (Exception ae) {
-      //System.out.println("An error occurred.");
-      //System.out.println(ae);
-      //ae.printStackTrace();
-        //}
-    //}
-    //void updateSquad() throws FileNotFoundException{
-        
-    //}
     
-    void displaySquad(String squadName) throws FileNotFoundException
+    void displaySquad() throws FileNotFoundException
 	{
-                 Scanner input3 = new Scanner(new File("database//squads//" + squadName +".txt"));
-		//Scanner input3 = new Scanner(new File("database//players//" + Sname + "//goalkeepers//" + "goalkeepers.txt"));
+    	
+    	System.out.println("\nCreated Squads: ");
+    	Scanner sqd = new Scanner(System.in);
+    	Scanner input4 = new Scanner(new File("database//squads//" + fEmail +"squads.txt"));
+    	while (input4.hasNextLine())
+		{
+		   System.out.println(input4.nextLine());
+		}
+    	System.out.println("Please enter name of the squad you want to display: ");
+    	String squadName = sqd.nextLine();
+        Scanner input3 = new Scanner(new File("database//squads//" + squadName +".txt"));
 		while (input3.hasNextLine())
 		{
 		   System.out.println(input3.nextLine());
 		}
 	}
 }
-    
-
-

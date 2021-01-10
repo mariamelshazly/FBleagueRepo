@@ -2,6 +2,7 @@ package fbleague;
 
 public class playerFactory {
 
+	@SuppressWarnings("unused")
 	public Player makePlayer(String position)
 	{
 		Player newPlayer = null;

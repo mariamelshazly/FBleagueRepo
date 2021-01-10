@@ -1,4 +1,3 @@
-
 package fbleague;
 import java.util.Scanner;
 import java.io.BufferedWriter;
@@ -24,29 +23,33 @@ Ahmed Medhat
 Abdulrahman Ayman
 Mariam ElShazly
  */
+@SuppressWarnings("unused")
 public class FBLeague {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception{
+    @SuppressWarnings("resource")
+	public static void main(String[] args) throws Exception{
         SigningUp u1 = new SigningUp();
         LoggingIn u2 = new LoggingIn();
         int choice;
         Scanner chc = new Scanner(System.in);
+        String userType;
         while(true)
         {
         	System.out.println("\nPlease enter what you want to do: \n");
         	System.out.println("0. DATABASE INITIALIZATION (!!!PLEASE SELECT THIS OPTION ON THE FIRST EXECUTION ON YOUR LOCAL MACHINE!!!) \n");
         	System.out.println("1. Sign Up \n");
         	System.out.println("2. Log in \n");
-        	System.out.println("3. Exit \n");
+        	System.out.println("3. Log in as admin \n");
+        	System.out.println("4. Exit \n");
         	System.out.println("Please input your choice by entering the corresponding number: ");
         	choice = chc.nextInt();
         	if(choice == 0)
         	{
         		Scanner initS = new Scanner(System.in);
-;        		int initChoice;
+        		int initChoice;
         		System.out.println("\nWARNING: This option is intended to be run ONLY ONCE on the first run on your local machine.");
         		System.out.println("\nThis option initializes the software's database on your local machine in order to run properly and without errors.");
         		System.out.println("\nThis option may cause unintended side effects if run more than once on the same local machine or while the database is already initialized.");
@@ -76,9 +79,18 @@ public class FBLeague {
         	else if (choice == 2)
         	{
         		u2.LogIn();
+        		userType = "Standard";
+                String fEmail = LoggingIn.getEmail();
         		break;
         	}
         	else if (choice == 3)
+        	{
+        		adminClass admin1 = new adminClass();
+        		admin1.adminLogin();
+        		userType = "Admin";
+        		break;
+        	}
+        	else if (choice == 4)
         	{
         		System.out.println("Program has been terminated successfully.");
         		System.exit(0);
@@ -89,20 +101,72 @@ public class FBLeague {
         		continue;
         	}
         }
-        String fEmail = LoggingIn.getEmail();
         int choice1;
         Scanner chc1 = new Scanner(System.in);
         System.out.println("\nWelcome to Fantasy Premier League!");
         System.out.println("\nTo begin, please select a feature from the following:");
         while(true)
         {
+        	if(userType.equals("Admin"))
+        	{
         	System.out.println("\n1. Create Player");
         	System.out.println("\n2. Remove Player");
         	System.out.println("\n3. Display Players");
         	System.out.println("\n4. Create Squad");
         	System.out.println("\n5. Display Squad");
-        	System.out.println("\n6. Exit");
+        	System.out.println("\n6. Create Public League");
+        	System.out.println("\n7. Create League Match");
+        	System.out.println("\n8. Exit");
+        	}
+        	else if(userType.equals("Standard"))
+        	{
+            	System.out.println("\n1. Display Players");
+            	System.out.println("\n2. Create Squad");
+            	System.out.println("\n3. Display Squad");
+                System.out.println("\n4. Create Private League");
+                System.out.println("\n5. Create League Match");
+            	System.out.println("\n6. Exit");
+        	}
         	choice1 = chc1.nextInt();
+        	if(userType.equals("Standard"))
+        	{
+        		if(choice1 == 1)
+        		{
+        			choice1 = 3;
+        		}
+        		else if(choice1 == 2)
+        		{
+        			choice1 = 4;
+        		}
+        		else if(choice1 == 3)
+        		{
+        			choice1 = 5;
+        		}
+                else if(choice1 == 4)
+        		{
+        			choice1 = 6;
+        		}
+        		else if(choice1 == 5)
+        		{
+        			choice1 = 8;
+        		}
+        		else if(choice1 == 6)
+        		{
+        			choice1 = 7;
+        		}
+                        
+        	}
+        	else if(userType.equals("Admin"))
+        	{
+        		if(choice1 == 7)
+        		{
+        			choice1 = 8;
+        		}
+        		else if(choice == 8)
+        		{
+        			choice1 = 7;
+        		}
+        	}
         	if (choice1==1)
         	{
         		while(true) {
@@ -189,7 +253,7 @@ public class FBLeague {
             	{
             		System.out.println("\nListing all Goalkeepers: ");
             		Scanner input1 = new Scanner(System.in);
-            		Scanner input = new Scanner(new File("database//players//" + fEmail + "//goalkeepers//" + "goalkeepers.txt"));
+            		Scanner input = new Scanner(new File("database//players//" + "goalkeepers//" + "goalkeepers.txt"));
             		while (input.hasNextLine())
             		{
             		   System.out.println(input.nextLine());
@@ -205,7 +269,7 @@ public class FBLeague {
             	{
             		System.out.println("\nListing all Forward Players: ");
             		Scanner input1 = new Scanner(System.in);
-            		Scanner input = new Scanner(new File("database//players//" + fEmail + "//forwardplayers//" + "forwardplayers.txt"));
+            		Scanner input = new Scanner(new File("database//players//" + "forwardplayers//" + "forwardplayers.txt"));
             		while (input.hasNextLine())
             		{
             		   System.out.println(input.nextLine());
@@ -220,7 +284,7 @@ public class FBLeague {
             	{
             		System.out.println("\nListing all Defenders: ");
             		Scanner input1 = new Scanner(System.in);
-            		Scanner input = new Scanner(new File("database//players//" + fEmail + "//defenders//" + "defenders.txt"));
+            		Scanner input = new Scanner(new File("database//players//" + "defenders//" + "defenders.txt"));
             		while (input.hasNextLine())
             		{
             		   System.out.println(input.nextLine());
@@ -235,7 +299,7 @@ public class FBLeague {
             	{
             		System.out.println("\nListing all Midfielders: ");
             		Scanner input1 = new Scanner(System.in);
-            		Scanner input = new Scanner(new File("database//players//" + fEmail + "//midfielders//" + "midfielders.txt"));
+            		Scanner input = new Scanner(new File("database//players//" + "midfielders//" + "midfielders.txt"));
             		while (input.hasNextLine())
             		{
             		   System.out.println(input.nextLine());
@@ -331,16 +395,42 @@ public class FBLeague {
                 }
                 else if(choice1 == 5)
                 {
-                	Scanner disScan = new Scanner(System.in);
-                	System.out.println("\nPlease input squad name to display: ");
-                	String dSquad = disScan.nextLine();
                 	Squad s2 = new Squad();
-                	s2.displaySquad(dSquad);
+                	s2.displaySquad();
                 }
-                else if(choice1 == 6)
+                else if(choice1 == 7)
                 {
                 	System.out.println("\nProgram has been terminated successfully.");
             		System.exit(0);
+                }
+                else if (choice1==6)
+                {
+                	if(userType.equals("Standard"))
+                	{
+                		privateLeague privLeauge = new privateLeague();
+                		privLeauge.createLeague();
+                	}
+                	else if(userType.equals("Admin"))
+                	{
+                		publicLeague pubLeague = new publicLeague();
+                		pubLeague.createLeague();
+                	}
+                }
+                else if(choice1==8)
+                {
+                	String leagueType;
+                	if(userType.equals("Standard"))
+                	{
+                		leagueType = "Private";
+                		match privMatch = new match();
+                		privMatch.createMatch(leagueType);
+                	}
+                	else if(userType.equals("Admin"))
+                	{
+                		leagueType = "Public";
+                		match pubMatch = new match();
+                		pubMatch.createMatch(leagueType);
+                	}
                 }
                // System.out.println("Display squad ?");
             	else

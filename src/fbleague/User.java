@@ -16,6 +16,7 @@ public abstract class User {
     
     void SignUp() throws IOException{};
     void LogIn() throws FileNotFoundException {}
+    void adminLogin() {};
     
     
     	}

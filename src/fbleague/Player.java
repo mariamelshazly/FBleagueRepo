@@ -11,6 +11,7 @@ public abstract class Player {
 	String club;
 	String owner;
 	Integer cost;
+	Integer points;
 	
 	void createPlayer() throws IOException {}
 	void deletePlayer() throws FileNotFoundException {}

@@ -1,0 +1,6 @@
+Test League
+4
+8
+0
+test password
+Squads: 
